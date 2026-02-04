@@ -1,0 +1,33 @@
+{% extends 'crud_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container bg-light shadow p-5 rounded mt-5 mb-5 form-layout" style="max-width: 450px; ">
+    
+    <h3 class="mb-3">Login to your account</h3>
+    <hr>
+
+    <form method="POST" autocomplete="off" class="h-100 d-flex flex-column justify-content-between">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            {{ form.username|as_crispy_field }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.password|as_crispy_field }}
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 p-2 mt-auto">
+            Login &nbsp; <i class="fa fa-key" aria-hidden="true"></i>
+        </button>
+    </form>
+
+    <div class="text-center mt-4">
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    </div>
+
+</div>
+
+{% endblock %}

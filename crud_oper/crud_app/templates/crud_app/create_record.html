@@ -1,0 +1,72 @@
+{% extends 'crud_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container my-5" style="max-width: 650px;">
+    
+    <div class="bg-light shadow p-5 rounded">
+        
+        <h3 class="mb-2 fw-bold">Create Record</h3>
+        <p class="text-muted mb-4">Start adding the required details for your record.</p>
+
+        <hr>
+
+        <form method="POST" autocomplete="off" class="mt-4">
+            {% csrf_token %}
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    {{ form.first_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6">
+                    {{ form.last_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6">
+                    {{ form.email|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6">
+                    {{ form.phone|as_crispy_field }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form.address|as_crispy_field }}
+                </div>
+
+                <div class="col-md-4">
+                    {{ form.city|as_crispy_field }}
+                </div>
+
+                <div class="col-md-4">
+                    {{ form.province|as_crispy_field }}
+                </div>
+
+                <div class="col-md-4">
+                    {{ form.country|as_crispy_field }}
+                </div>
+
+            </div>
+
+            <div class="mt-4">
+
+                <button type="submit" class="btn btn-primary fw-bold">
+                    Create Record &nbsp; <i class="fa fa-check"></i>
+                </button>
+
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary fw-bold ms-2">
+                    Return &nbsp; <i class="fa fa-arrow-left"></i>
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

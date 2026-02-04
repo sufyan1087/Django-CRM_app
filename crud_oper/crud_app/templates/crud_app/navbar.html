@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+
+    <a class="navbar-brand main-heading" href="#">
+      CRUD OPERATIONS
+    </a>
+
+    <button class="navbar-toggler" type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+
+        <!-- AUTHENTICATED USER -->
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">Dashboard <i class="fa fa-home"></i></a>
+        </li>
+
+        <li class="nav-item ms-3">
+          <a class="nav-link" href=" {% url 'logout' %}">logOut <i class="fa fa-sign-out"></i></a>
+        </li>
+
+        <!-- GUEST -->
+            {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href=" {% url 'register' %}">Register</a>
+        </li>
+
+        <li class="nav-item ms-3">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+          {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>
